@@ -6,7 +6,7 @@ COMPOSE_TEMPLATE="version: '3.0'
 
 services:
   kegbot:
-    image: kegbot/server:latest
+    image: kegbot/server:latest-arm
     restart: always
     ports:
       - '8000:8000'
@@ -24,7 +24,7 @@ services:
       KEGBOT_INSECURE_SHARED_API_KEY: '_kegbot_insecure_shared_api_key_'
 
   workers:
-    image: kegbot/server:latest
+    image: kegbot/server:latest-arm
     restart: always
     command: bin/kegbot run_workers
     volumes:
@@ -71,14 +71,14 @@ services:
   kegboard:
     image: kegbot/pycore:latest
     restart: always
-    command: bin/kegboard_daemon.py --kegboard_device=/dev/ttyACM0
+    command: bin/kegboard_daemon.py --kegboard_device=/dev/ttyUSB0
     tmpfs:
       - /tmp
       - /var/tmp
     environment:
       KEGBOT_REDIS_URL: redis://redis:6379/0
     devices:
-      - /dev/ttyACM0:/dev/ttyACM0
+      - /dev/ttyUSB0:/dev/ttyUSB0
       - /dev/bus/usb:/dev/bus/usb
 
 volumes:
@@ -160,6 +160,8 @@ setup_vars() {
                 exit 1
                 ;;
         esac
+    else
+      log "my nipples look like milk duds..."
     fi
 
     KEGBOT_DATA_DIR="${KEGBERRY_DIR}/data"
