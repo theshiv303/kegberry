@@ -2,8 +2,6 @@
 # Kegberry install script.
 # Source: https://github.com/Kegbot/kegberry
 
-set -e
-
 COMPOSE_TEMPLATE="version: '3.0'
 
 services:
@@ -97,58 +95,32 @@ warning() {
 }
 
 ensure_docker() {
-    log "Checking for docker ..."
-    docker_status=`which docker`
-    if [ $? -ne 0 ]; then
-        log "Docker not installed, installing ..."
-        curl -sSL https://get.docker.com | sh
-        sudo usermod -aG docker $USER
-    fi
-
+    log "Installing docker ..."
+    curl -sSL https://get.docker.com | sh
+    sudo usermod -aG docker $USER
+    sudo dpkg --configure -a
     docker_version=`docker --version`
-    if [ $? -ne 0 ]; then
-        log "Docker version could not be determined"
-    else
-        log "Docker version ${docker_version} - great!"
-    fi
-
+    log "Docker version ${docker_version} - great!"
     log "Testing docker ..."
     docker run hello-world 2>&1 > /dev/null
     log "Docker works!"
 }
 
 ensure_python() {
-    log "Checking for python ..."
-    python_status=`which python3`
-    if [ $? -ne 0 ]; then
-        log "Python not installed, installing ..."
-        sudo apt-get install -y libffi-dev libssl-dev
-        sudo apt-get install -y python3 python3-pip
-        sudo apt-get remove python-configparser || true
-    fi
 
+    log "Installing python and dependencies ..."
+    sudo apt-get install -y libffi-dev libssl-dev
+    sudo apt-get install -y python3 python3-pip
+    sudo apt-get remove python-configparser || true
     python_version=`python3 --version 2>&1`
-    if [ $? -ne 0 ]; then
-        log "Python3 version could not be determined"
-        exit 1
-    fi
     log "Python version ${python_version} - great!"
 }
 
 ensure_docker_compose() {
     log "Checking for docker-compose ..."
-    docker_compose_status=`which docker-compose`
-    if [ $? -ne 0 ]; then
-        log "docker-compose not installed, installing ..."
-        sudo pip3 install docker-compose
-    fi
-
-    docker_compose=`docker-compose --version`
-    if [ $? -ne 0 ]; then
-        log "docker-compose version could not be determined"
-    else
-        log "docker-compose version ${docker_compose} - great!"
-    fi
+    log "docker-compose not installed, installing ..."
+    sudo pip3 install docker-compose
+    log "docker-compose version ${docker_compose} - great!"
 }
 
 ensure_all_dependencies() {
