@@ -30,7 +30,7 @@ command into your Raspbian system:
 
 
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/kegbot/kegberry/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/theshiv303/kegberry/master/install.sh)"
 ```
 
 The installer will guide you through the next steps.
