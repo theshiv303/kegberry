@@ -157,8 +157,6 @@ setup_vars() {
                 exit 1
                 ;;
         esac
-    else
-      log "my nipples look like milk duds..."
     fi
 
     KEGBOT_DATA_DIR="${KEGBERRY_DIR}/data"
