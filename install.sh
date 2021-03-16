@@ -101,9 +101,6 @@ ensure_docker() {
     sudo dpkg --configure -a
     docker_version=`docker --version`
     log "Docker version ${docker_version} - great!"
-    log "Testing docker ..."
-    docker run hello-world 2>&1 > /dev/null
-    log "Docker works!"
 }
 
 ensure_python() {
