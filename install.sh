@@ -230,7 +230,7 @@ do_install() {
     sed -i -e "s%_kegbot_insecure_shared_api_key_%${KEGBOT_INSECURE_SHARED_API_KEY}%" ${DOCKER_COMPOSE_FILE}
 
     log "Fetching images ..."
-    docker-compose -f ${DOCKER_COMPOSE_FILE} pull
+    sudo docker-compose -f ${DOCKER_COMPOSE_FILE} pull
 
     log "Done!"
     echo ""
