@@ -60,6 +60,7 @@ services:
   pycore:
     image: kegbot/pycore:latest
     restart: always
+    command: bin/kegbot_core.py
     tmpfs:
       - /tmp
       - /var/tmp
