@@ -37,6 +37,20 @@ The installer will guide you through the next steps.
 
 Issues:
 
+Fix ghost pours
+
+After docker image pull:
+
+```
+sudo docker run -it [kegbot pycore container id] bash
+vi kegbot/pycore/common_defs.py
+pour setting... 30
+exit
+sudo docker commit [container id] kegbot/pycore-1:latest (or w/e)
+sudo docker stop [container id]
+edit docker-compose.yml to reflect new name (eg: kegbot/pycore-1:latest)
+````
+
 Fix core_user already exists during setup
 
 ```
