@@ -49,6 +49,8 @@ exit
 sudo docker commit [container id] kegbot/pycore-1:latest (or w/e)
 sudo docker stop [container id]
 edit docker-compose.yml to reflect new name (eg: kegbot/pycore-1:latest)
+*it might be required but i also added the command for pycore to docker-compose.yml top ensure it starts correctly:
+command: python bin/kegbot_core.py
 ````
 
 **Fix core_user already exists during setup**
