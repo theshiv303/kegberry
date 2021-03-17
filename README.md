@@ -44,6 +44,7 @@ sudo docker exec -it [kegbot server container id] bash
 export DJANGO_SETTINGS_MODULE=pykeg.settings
 django-admin migrate --fake-initial
 ```
+Attempted to do this in views.py via management.call_command(..., fake_intial) but no dice.
 
 ## Help & Next Steps
 
