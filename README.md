@@ -62,6 +62,15 @@ django-admin migrate --fake-initial
 ```
 Attempted to do this in views.py via management.call_command(..., fake_initial=True) but no dice.
 
+**COMPOSE_HTTP_TIMEOUT**
+
+```
+export COMPOSE_HTTP_TIMEOUT=500
+or
+sudo COMPOSE_HTTP_TIMEOUT=500 docker-compose up -d
+sudo COMPOSE_HTTP_TIMEOUT=500 docker-compose down
+```
+
 ## Help & Next Steps
 
 Have questions, need help, or want to show off your build? Visit the
