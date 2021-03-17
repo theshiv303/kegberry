@@ -37,7 +37,7 @@ The installer will guide you through the next steps.
 
 ## Issues
 
-**Fix ghost pours
+**Fix ghost pours**
 
 After docker image pull:
 
@@ -51,7 +51,7 @@ sudo docker stop [container id]
 edit docker-compose.yml to reflect new name (eg: kegbot/pycore-1:latest)
 ````
 
-**Fix core_user already exists during setup
+**Fix core_user already exists during setup**
 
 ```
 sudo docker exec -it [kegbot server container id] bash
