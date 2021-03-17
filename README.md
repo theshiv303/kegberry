@@ -37,12 +37,13 @@ The installer will guide you through the next steps.
 
 Issues:
 
-Fix core_user already exists during setup -
+Fix core_user already exists during setup
 
-$  sudo docker exec -it [kegbot server container id] bash
-$  export DJANGO_SETTINGS_MODULE=pykeg.settings
-$  django-admin migrate --fake-initial
-
+```
+sudo docker exec -it [kegbot server container id] bash
+export DJANGO_SETTINGS_MODULE=pykeg.settings
+django-admin migrate --fake-initial
+```
 
 ## Help & Next Steps
 
